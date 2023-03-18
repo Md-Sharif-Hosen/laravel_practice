@@ -65,20 +65,13 @@ class CrudBookController extends Controller
     //     // dd(request()->all(),$crud);
     // }
 
+    public function edit($id)
+    {
+        //function_body
+        $crud_author = CrudAuthor::get();
+        $crud_publication = CrudPublication::get();
+        $crud_book =CrudBook::where($id);
 
-
-
-
-
-
-    
-    // public function edit($id)
-    // {
-    //     //function_body
-    //     $crud_author = CrudAuthor::get();
-    //     $crud_publication = CrudPublication::get();
-    //     $crud_book =CrudBook::where($id);
-
-    //     return view('admin.crud_book.index', ['crud_author' => $crud_author, 'crud_publication' => $crud_publication , 'crud_book'=>$crud_book]);
-    // }
+        return view('admin.crud_book.index', ['crud_author' => $crud_author, 'crud_publication' => $crud_publication , 'crud_book'=>$crud_book]);
+    }
 }
