@@ -61,7 +61,8 @@ Route::group( ['prefix'=>'crud' ],function(){
     Route::get('/create','SharifController@create')->name('dashboard.crud.create');
     Route::get('/index','SharifController@index')->name('dashboard.crud.index');
     Route::post('/store','SharifController@store')->name('dashboard.crud.store');
-    // Route::get('/create','SharifController@create')->name('dashboard.crud.create');
+    Route::get('/edit/{id}','SharifController@edit')->name('dashboard.crud.edit');
+    Route::post('/update','SharifController@update')->name('dashboard.crud.update');
 });
 //crud book
 Route::group( ['prefix'=>'crud_book' ],function(){

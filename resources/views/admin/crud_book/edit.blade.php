@@ -25,61 +25,10 @@
 
             <div class="row justify-content-center">
                 <div class="col-6">
-                    @if (request()->has('edit_form'))
-
-                    <form action="" method="Post" enctype="multipart/form-data">
-                        @csrf
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-8">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <h2> Book Information Edit</h2>
-                                            {{-- <input type="hidden" name="id" value="{{ $crud_book->id }}"> --}}
-                                            <div class="form-group mb-3">
-                                              <label for="">title</label>
-                                              <input type="text" name="bookstitle" class="form-control">
-                                            </div>
-                                            <div class="form-group mb-3">
-                                                <label for="">BooksAuthor</label>
-                                                   <select class="form-control" name="booksauthor[]">
-                                                    @foreach ($crud_author as $author )
-                                                    <option value="{{ $author->id }}">
-                                                    {{ $author->name }}
-                                                    </option>
-
-                                                    @endforeach
-                                                   </select>
-                                                  </div>
-                                              </div>
-                                            <div class="form-group mb-3">
-                                                <label for="">Book Publication Name</label>
-                                                <select class="form-control" name="bookspublication" id="">
-                                                    @foreach ($crud_publication as $publication )
-                                                        <option value="{{ $publication->id }}">
-                                                        {{ $publication->name }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                              </div>
 
 
+              
 
-                                              <div class="form-group mb-3">
-                                                <label for="">image</label>
-                                                <input type="file" accept="image/*" name="booksimage" class="form-control">
-                                              </div>
-
-
-
-                                              <button>Submit</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                    @endif
 
                     <!-- end table -->
                 </div>

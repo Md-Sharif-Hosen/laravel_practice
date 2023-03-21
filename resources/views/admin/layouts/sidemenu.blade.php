@@ -48,6 +48,7 @@
             <ul class="sub-menu mm-collapse mm-show" aria-expanded="false" style="">
                 <li><a href="{{ route('dashboard.crud.create') }}" key="t-products">Create</a></li>
                 <li><a href="{{ route('dashboard.crud.index') }}" key="t-products">index</a></li>
+                {{-- <li><a href="{{ route('dashboard.crud.edit',$item->id) }}" key="t-products">edit</a></li> --}}
                 {{-- <li><a href="{{ route('dashboard.crud.create') }}" key="t-products">Create</a></li> --}}
 
             </ul>

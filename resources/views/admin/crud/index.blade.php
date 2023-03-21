@@ -67,7 +67,7 @@
                                                         <td>{{ $item->gender }}</td>
                                                         <td>
                                                             <a href="" class="btn btn-sm btn-info">Show</a>
-                                                            <a href="" class="btn btn-sm btn-warning mx-2">Edit</a>
+                                                            <a href="{{ route('dashboard.crud.edit',$item->id) }}" class="btn btn-sm btn-warning mx-2">Edit</a>
                                                             <a href="" class="btn btn-sm btn-danger">Delete</a>
                                                         </td>
                                                     </tr>
