@@ -19,7 +19,17 @@ class SharifController extends Controller
 
         return view('admin.crud.create', ['roles'=>$roles,'crud_hobbies'=>$crud_hobbies]);
     }
+
     public function index()
+    {
+        //function_body
+        $all_data=CrudModel::with(['crud_hobbies'=>function($q){
+            return $q->select('crud_hobbies.id','crud_hobbies.title');
+        }])->paginate(15);
+        // dd($all_data);
+        return view('admin.crud.index',compact('all_data'));
+    }
+    public function store(Request $request)
 
     {
         $crud= new CrudModel();
@@ -35,17 +45,14 @@ class SharifController extends Controller
         $crud->image=Storage::put('/crud upload',request()->file('image'));
         $crud->slug=rand(100000,999999).$crud->id."". rand(100,999);
         $crud->save();
-
+        // dd(request()->all(),$crud);
         $all_data=CrudModel::with(['crud_hobbies'=>function($q){
             return $q->select('crud_hobbies.id','crud_hobbies.title');
         }])->paginate(15);
-        // dd($all_data);
-        return view('admin.crud.index',compact('all_data'));
-
-
-        // dd(request()->all(),$crud);
-
+         return redirect()->route('dashboard.crud.index');
 
 }
+
+
 
 }

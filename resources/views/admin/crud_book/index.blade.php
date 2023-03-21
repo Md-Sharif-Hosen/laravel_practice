@@ -23,7 +23,7 @@
             <!-- end page title -->
 
             <div class="row justify-content-center">
-                <div class="col-6">
+                <div class="col-12">
 
                     <div class="container">
                         <div class="row">

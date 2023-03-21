@@ -14,8 +14,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/crud','CrudController@index');
+Route::get('/crud','CrudController@index')->name('crud-index');
+Route::get('/edit/{id}','CrudController@edit');
 Route::post('/crud-index','CrudController@store')->name('crud-insert');
+Route::post('/crud-update','CrudController@update')->name('crud-update');
 
 Route::get('/', 'WebsiteControler@home');
 Route::get('/contact', 'WebsiteControler@contact')->name('website.contact');
@@ -57,8 +59,8 @@ Route::group( ['prefix'=>'contact' ],function(){
 //crud
 Route::group( ['prefix'=>'crud' ],function(){
     Route::get('/create','SharifController@create')->name('dashboard.crud.create');
-    Route::post('/index','SharifController@index')->name('dashboard.crud.index');
-    // Route::post('/','CrudController@store');
+    Route::get('/index','SharifController@index')->name('dashboard.crud.index');
+    Route::post('/store','SharifController@store')->name('dashboard.crud.store');
     // Route::get('/create','SharifController@create')->name('dashboard.crud.create');
 });
 //crud book
@@ -67,7 +69,7 @@ Route::group( ['prefix'=>'crud_book' ],function(){
     Route::get('/index','CrudBookController@index')->name('dashboard.crud_book.index');
     Route::post('/store','CrudBookController@store')->name('dashboard.crud_book.store');
     Route::post('/update','CrudBookController@update')->name('dashboard.crud_book.update');
-    
+
 
 
 });

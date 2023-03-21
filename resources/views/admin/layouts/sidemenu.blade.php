@@ -47,7 +47,7 @@
             </a>
             <ul class="sub-menu mm-collapse mm-show" aria-expanded="false" style="">
                 <li><a href="{{ route('dashboard.crud.create') }}" key="t-products">Create</a></li>
-                {{-- <li><a href="{{ route('dashboard.crud.show') }}" key="t-products">Show</a></li> --}}
+                <li><a href="{{ route('dashboard.crud.index') }}" key="t-products">index</a></li>
                 {{-- <li><a href="{{ route('dashboard.crud.create') }}" key="t-products">Create</a></li> --}}
 
             </ul>
@@ -60,7 +60,7 @@
             <ul class="sub-menu mm-collapse mm-show" aria-expanded="false" style="">
                 <li><a href="{{ route('dashboard.crud_book.create') }}" key="t-products">Create</a></li>
                 <li><a href="{{ route('dashboard.crud_book.index') }}" key="t-products">Index</a></li>
-               
+
 
             </ul>
         </li>
