@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\FruitsController;
+use App\Http\Controllers\Admin\ShopController;
 use App\Http\Controllers\WebsiteControler;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -73,6 +75,28 @@ Route::group( ['prefix'=>'crud_book' ],function(){
 
 
 
+});
+Route::group(['prefix' => 'shop',], function () {
+
+    Route::get('/index', [ShopController::class, 'index'])->name('dashboard.shop.index');
+    Route::get('/create', [ShopController::class, 'create'])->name('dashboard.shop.create');
+    Route::post('/store', [ShopController::class, 'store'])->name('dashboard.shop.store');
+    Route::get('/edit/{id}', [ShopController::class, 'edit'])->name('dashboard.shop.edit');
+    Route::post('/update/{id}', [ShopController::class, 'update'])->name('dashboard.shop.update');
+    Route::get('/show/{id}', [ShopController::class, 'show'])->name('dashboard.shop.show');
+    Route::get('/destroy/{id}', [ShopController::class, 'destroy'])->name('dashboard.shop.destroy');
+    Route::get('/details/{id}', [ShopController::class, 'details'])->name('dashboard.shop.details');
+});
+Route::group(['prefix' => 'fruits',], function () {
+
+    Route::get('/index', [FruitsController::class, 'index'])->name('dashboard.fruite.index');
+    Route::get('/create', [FruitsController::class, 'create'])->name('dashboard.fruite.create');
+    Route::post('/store', [FruitsController::class, 'store'])->name('dashboard.fruite.store');
+    Route::get('/edit/{id}', [FruitsController::class, 'edit'])->name('dashboard.fruite.edit');
+    Route::post('/update/{id}', [FruitsController::class, 'update'])->name('dashboard.fruite.update');
+    Route::get('/show/{id}', [FruitsController::class, 'show'])->name('dashboard.fruite.show');
+    Route::get('/destroy/{id}', [FruitsController::class, 'destroy'])->name('dashboard.fruite.destroy');
+    Route::get('/details/{id}', [FruitsController::class, 'details'])->name('dashboard.fruite.details');
 });
 
 

@@ -35,7 +35,7 @@ class CrudController extends Controller
         $crud->save();
 
 
-        $crud->hobby=json_encode(request()->hobby);
+        // $crud->hobby=json_encode(request()->hobby);
         $crud->crud_hobbies()->attach(request()->hobby);
         $crud->image=Storage::put('/crud upload',request()->file('image'));
         $crud->slug=rand(100000,999999).$crud->id."". rand(100,999);

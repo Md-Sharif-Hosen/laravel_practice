@@ -35,7 +35,7 @@
                                     @foreach ($crud_hobbies as $item)
                                     {{-- @dd($crud_model->crud_hobbies->firstwhere('id','=', $item->id)) --}}
                                         <label for="Travelling {{ $item->id }}">
-                                            <input type="checkbox"  fid="Travelling {{ $item->id }}"
+                                            <input type="checkbox"   find="Travelling {{ $item->id }}"
                                                 value="{{ $item->id }}" name="hobby[]">
                                             {{ $item->title }}
                                         </label>
