@@ -15,6 +15,7 @@ class CreateCrudImagesTable extends Migration
     {
         Schema::create('crud_images', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('crud_model_id')->nullable();
             $table->string('path',100)->nullable();
             $table->timestamps();
         });

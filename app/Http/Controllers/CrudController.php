@@ -77,7 +77,7 @@ class CrudController extends Controller
             # code...
             $crud->crud_hobbies()->sync(request()->hobby);
         }
-        $crud->image=Storage::put('/crud upload',request()->file('image'));
+        $crud->image=Storage::put('/crud_upload',request()->file('image'));
         $crud->save();
        return redirect()->route('crud-index');
     }
