@@ -8,10 +8,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Student extends Model
 {
+
+
+
+
     use HasFactory;
     public function department()
     {
         //function_body
-        return $this->belongsTo(Department::class,'Department','id');
+        return $this->belongsTo(Department::class, 'Department', 'id');
     }
 }
