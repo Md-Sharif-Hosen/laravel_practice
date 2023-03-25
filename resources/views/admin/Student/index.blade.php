@@ -51,7 +51,7 @@
                                                             <td>{{ $item->Name }}</td>
 
                                                             <td>{{ $item->Email }}</td>
-                                                            <td>{{$item->departments->Department_Name}}</td>
+                                                            <td>{{$item->department->Department_Name}}</td>
                                                             {{-- $item->departments ? $item->departments->Department_Name : "" --}}
                                                              <td>{{ $item->RegId }}</td>
                                                              <td>{{ $item->Contact_Number }}</td>

@@ -50,7 +50,7 @@
                                     <tr>
                                         <td>Department</td>
                                         <td>:</td>
-                                        <td> {{ $studentdetails->Department }} </td>
+                                        <td> {{ $studentdetails->department->Department_Name }} </td>
                                     </tr>
 
                                     <tr>
