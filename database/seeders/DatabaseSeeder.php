@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Contact;
+use App\Models\Department;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -20,6 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call(UserCrudHobby::class);
         $this->call(CrudAuthorseeder::class);
         $this->call(CrudPublicationSeeder::class);
+        $this->call(StudentDepartment::class);
 
         Contact::factory()->count(100) ->create();
     }

@@ -98,6 +98,17 @@ Route::group(['prefix' => 'fruits',], function () {
     Route::get('/destroy/{id}', [FruitsController::class, 'destroy'])->name('dashboard.fruite.destroy');
     Route::get('/details/{id}', [FruitsController::class, 'details'])->name('dashboard.fruite.details');
 });
+Route::group( ['prefix'=>'Student',],function(){
+    Route::get('/create','StudentController@create')->name('dashboard.student.create');
+    Route::post('/store','StudentController@store')->name('dashboard.student.store');
+    Route::get('/index','StudentController@index')->name('dashboard.student.index');
+    Route::get('/edit/{id}','StudentController@edit')->name('dashboard.student.edit');
+    Route::post('/update/{id}','StudentController@update')->name('dashboard.student.update');
+    // Route::get('/show/{id}','StudentController@show')->name('dashboard.student.update');
+    Route::get('/destory/{id}','StudentController@destroy')->name('dashboard.student.destroy');
+    Route::get('/details/{id}','StudentController@details')->name('dashboard.student.details');
+
+});
 
 
 
