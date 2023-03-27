@@ -13,6 +13,7 @@ class Student extends Model
 
 
     use HasFactory;
+    
     public function department()
     {
         //function_body

@@ -104,9 +104,18 @@ Route::group( ['prefix'=>'Student',],function(){
     Route::get('/index','StudentController@index')->name('dashboard.student.index');
     Route::get('/edit/{id}','StudentController@edit')->name('dashboard.student.edit');
     Route::post('/update/{id}','StudentController@update')->name('dashboard.student.update');
-    // Route::get('/show/{id}','StudentController@show')->name('dashboard.student.update');
     Route::get('/destory/{id}','StudentController@destroy')->name('dashboard.student.destroy');
     Route::get('/details/{id}','StudentController@details')->name('dashboard.student.details');
+
+});
+Route::group( ['prefix'=>'Exam',],function(){
+    Route::get('/create','ExamController@create')->name('dashboard.Exam.create');
+    Route::post('/store','ExamController@store')->name('dashboard.Exam.store');
+    Route::get('/index','ExamController@index')->name('dashboard.Exam.index');
+    Route::get('/edit/{id}','ExamController@edit')->name('dashboard.Exam.edit');
+    Route::post('/update/{id}','ExamController@update')->name('dashboard.Exam.update');
+    Route::get('/destory/{id}','ExamController@destroy')->name('dashboard.Exam.destroy');
+    Route::get('/details/{id}','ExamController@details')->name('dashboard.Exam.details');
 
 });
 
