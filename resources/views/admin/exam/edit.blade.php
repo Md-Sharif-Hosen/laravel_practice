@@ -80,7 +80,7 @@
 
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="Contact_Number">Course Code</label>
+                                    <label for="Contact_Number">Mark</label>
                                     <input class="form-control" name="Course_Code" value="{{ $examupdate->Course_Code }}"
                                         type="text">
 

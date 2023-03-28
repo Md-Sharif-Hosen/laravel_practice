@@ -119,6 +119,14 @@ Route::group( ['prefix'=>'Exam',],function(){
 
 });
 
+Route::group( ['prefix'=>'examlist',],function(){
+Route::get('/create','ExamListController@create')->name('dashboard.examlist.create');
+Route::post('/store','ExamListController@store')->name('dashboard.examlist.store');
+Route::get('/index','ExamListController@index')->name('dashboard.examlist.index');
+Route::get('/destory/{id}','ExamListController@destory')->name('dashboard.examlist.destory');
+Route::get('/details/{id}','ExamListController@details')->name('dashboard.examlist.details');
+});
+
 
 
 

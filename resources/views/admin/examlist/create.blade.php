@@ -25,49 +25,50 @@
             <div class="row justify-content-center">
                 <div class="col-6">
 
-                    <form action="{{ route('dashboard.Exam.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('dashboard.examlist.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="card">
                             <div class="card_header d-flex flex-wrap gap-3 justify-content-between p-4">
                                 <h2>Exam Create</h2>
-                                <a href="{{ route('dashboard.Exam.index') }}" class="btn btn-outline-info"> <i
+                                <a href="{{ route('dashboard.examlist.index') }}" class="btn btn-outline-info"> <i
                                         class="fa fa-arrow-left">Back</i></a>
                             </div>
                             <div class="card-body">
                                 <div class="form_group col-md-6">
-                                    <label for="">Student Name</label>
+                                    <label for="">Subject Name</label>
                                     {{-- @dd($studentinfo) --}}
-                                    <select class="form-control" name="Student_Name" id="">
-                                        @foreach ($studentinfo as $item)
-                                            <option value="{{ $item->id }}">{{ $item->Name }}</option>
+                                    <select class="form-control" name="Subject_Name" id="">
+                                        @foreach ($examsubject as $item)
+                                            <option value="{{ $item->id }}">{{ $item->Exam_Name }}</option>
                                         @endforeach
                                     </select>
 
                                 </div>
-                                <div class="form-group mb-3">
-                                    <label for="">Department</label>
-                                    {{-- @dd($studentinfo) --}}
-                                    <select class="form-control" name="Department">
-                                        @foreach ($examdepartments as $item)
+                                <br>
 
-                                            <option value="{{ $item->id }}">
-                                                {{ $item->Department_Name }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-
-                                <div class="from-group col-md-6">
-                                    <label for="">Exam Name</label>
-                                    <input value="" type="text" name="Exam_Name" class="form-control" />
-
-                                </div>
                                 <div class="form_group col-md-6">
-                                    <label for="">Mark</label>
-                                    <input type="text" value="" name='Course_Code' class="form-control">
+                                    <label for="">Subject Code</label>
+                                    <input class="form-control" type="text" name="Subject_Code" >
+                                    {{-- <select class="form-control" name="Subject_Code" id="">
+                                        @foreach ($examsubject as $item)
+                                            <option value="{{ $item->id }}">{{ $item->Course_Code }}</option>
+                                        @endforeach
+                                    </select> --}}
+
 
                                 </div>
+                                <br>
+                                <div class="form-group mt-6">
+                                    <label>Student Name:</label>
+                                    <br>
+                                @foreach($students as $item)
+                                  <label for="{{ $item->id}}">
+                                    <input type="checkbox" value="{{ $item->id}}" id="{{ $item->id}}" name="Student_Names[]">
+                                       {{ $item->Name}}
+                                    </label>
+                                @endforeach
 
+                                </div>
 
 
 

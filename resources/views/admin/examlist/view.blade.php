@@ -1,6 +1,5 @@
 @extends('admin.layouts.dashboard_layout')
 @section('content')
-
     <div class="page-content">
         <div class="container">
 
@@ -34,38 +33,35 @@
                             <div class="card-body">
                                 <table class="table">
                                     <tr>
-                                        <td> Student Name</td>
+                                        <td> Subject Name</td>
                                         <td>:</td>
                                         <td>
-                                            @foreach ($examdetails->students as $item )
 
-                                            {{$item->Name}}
-                                            @endforeach
+
+                                            {{$examdetails->Exam_Name }}
+
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>Department</td>
-                                        <td>:</td>
-                                        <td>{{ $examdetails->department->Department_Name }}</td>
-
-                                    </tr>
-
-
-
 
 
                                     <tr>
-                                        <td>Exam subject</td>
+                                        <td>Subject Code </td>
                                         <td>:</td>
-                                        <td>{{$examdetails->Exam_Name}}</td>
+                                        <td>{{ $examdetails->Course_Code }}</td>
                                     </tr>
+
                                     <tr>
-                                        <td>Mark </td>
+                                        <td> Students Name</td>
                                         <td>:</td>
-                                        <td>{{$examdetails->Course_Code}}</td>
+                                        <td>
+
+                                         @foreach ($examdetails->students as $item )
+
+                                         {{$item->Name }}
+                                         @endforeach
+
+                                        </td>
                                     </tr>
-
-
 
 
 
@@ -73,13 +69,13 @@
 
                                 </table>
 
-                                </div>
-                                <div class=" text-center card-footer">
-                                    <a href="{{ route('dashboard.Exam.index') }}" class="btn btn-outline-info"> <i
-                                        class="fa fa-arrow-left">Back</i></a>
-                                </div>
                             </div>
-                      </form>
+                            <div class=" text-center card-footer">
+                                <a href="{{ route('dashboard.examlist.index') }}" class="btn btn-outline-info"> <i
+                                        class="fa fa-arrow-left">Back</i></a>
+                            </div>
+                        </div>
+                    </form>
 
 
                     <!-- end table -->

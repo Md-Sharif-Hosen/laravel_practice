@@ -35,55 +35,43 @@
                                             <table class="table table-striped">
                                                 <thead>
                                                     <tr>
-                                                        <th>Student Name</th>
-                                                        <th>Department</th>
-                                                        <th>Exam Name</th>
-                                                        <th>Mark</th>
+                                                        <th>Subject Name</th>
+                                                        <th>Subject Code</th>
+                                                        <th>Students Name</th>
                                                         <th>Action</th>
 
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach ($examinfo as $item)
+                                                    @foreach ($examdetails as $item)
                                                         <tr>
-                                                            {{-- @dd($item->students) --}}
+
                                                             <td>
-
-                                                                @if ($item->students)
-                                                                    <ol>
-                                                                        @foreach ($item->students as $name)
-                                                                            <li>{{ $name->Name }}</li>
-                                                                        @endforeach
-                                                                    </ol>
-                                                                @endif
-
+                                                                {{ $item->Subject_Name }}
                                                             </td>
 
 
-{{--
                                                             <td>
+                                                                {{ $item->Subject_Code }}
 
-                                                                @if ($item->departments)
+                                                            </td>
+                                                            <td>
+                                                                {{-- @if ($item->student)
                                                                     <ol>
-                                                                        @foreach ($item->departments as $find)
-                                                                            <li>{{ $find-> }}</li>
+                                                                        @foreach ($item->student as $studentlist)
+                                                                        <li>{{ $studentlist->Name }}</li>
                                                                         @endforeach
                                                                     </ol>
-                                                                @endif
-                                                            </td> --}}
-                                                            {{-- @dd($item->Department) --}}
-                                                            <td>{{ $item->department->Department_Name}}</td>
+                                                                @endif --}}
+                                                                {{ $item->student_name }}
 
-                                                            <td>{{ $item->Exam_Name }}</td>
-
-
-                                                            <td>{{ $item->Course_Code }}</td>
+                                                            </td>
                                                             <td>
-                                                                <a href="{{ route('dashboard.Exam.details', $item->id) }}"
+                                                                <a href="{{ route('dashboard.examlist.details', $item->id) }}"
                                                                     class="btn btn-sm btn-info">details</a>
-                                                                <a href="{{ route('dashboard.Exam.edit', $item->id) }}"
+                                                                <a href=""
                                                                     class="btn btn-sm btn-warning mx-2">edit</a>
-                                                                <a href="{{ route('dashboard.Exam.destroy', $item->id) }}"
+                                                                <a href="{{ route('dashboard.examlist.destory', $item->id) }}"
                                                                     class="btn btn-sm btn-danger">delete</a>
                                                             </td>
                                                         </tr>

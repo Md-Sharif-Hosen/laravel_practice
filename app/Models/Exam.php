@@ -19,4 +19,5 @@ class Exam extends Model
         //function_body
         return $this->belongsTo(Department::class,'Department','id');
     }
+   
 }
