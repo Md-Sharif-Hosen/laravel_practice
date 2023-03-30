@@ -3,12 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Exam;
-use App\Models\ExamList;
-use App\Models\Student;
 use Illuminate\Http\Request;
 
-class ExamListController extends Controller
+class ExamAbsentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,11 +15,6 @@ class ExamListController extends Controller
     public function index()
     {
         //
-
-        // $student=Student::get();
-        $examdetails = ExamList::with('student','subject')->get();
-        // dd($examdetails);
-        return view('admin.examlist.index', compact('examdetails',));
     }
 
     /**
@@ -33,10 +25,7 @@ class ExamListController extends Controller
     public function create()
     {
         //
-
-        $students=Student::get();
-        $examsubject = Exam::get();
-        return view('admin.examlist.create', compact('examsubject','students'));
+        return view('admin.examabsent.create');
     }
 
     /**
@@ -48,17 +37,6 @@ class ExamListController extends Controller
     public function store(Request $request)
     {
         //
-        // dd(request()->all());
-        foreach (request()->Student_Names as  $item) {
-            # code...
-            $examliststore = new ExamList();
-            $examliststore->Subject_Name = request()->Subject_Name;
-            $examliststore->Subject_Code = request()->Subject_Code;
-            $examliststore->student_name =$item;
-            $examliststore->save();
-        }
-
-        return redirect()->route('dashboard.examlist.index');
     }
 
     /**
@@ -67,16 +45,9 @@ class ExamListController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function details($id)
+    public function show($id)
     {
         //
-
-        $examdetails = Examlist::where('id',$id)->with('student','subject')->first();
-
-
-
-        // dd($examdetails);
-        return view('admin.examlist.view', compact('examdetails'));
     }
 
     /**
@@ -108,12 +79,8 @@ class ExamListController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destory($id)
+    public function destroy($id)
     {
         //
-        // dd($id);
-        ExamList::where('id', $id)->delete();
-
-        return redirect()->back();
     }
 }

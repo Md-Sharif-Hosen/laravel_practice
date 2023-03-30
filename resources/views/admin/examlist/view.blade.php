@@ -33,12 +33,28 @@
                             <div class="card-body">
                                 <table class="table">
                                     <tr>
+                                        <td> Students Name</td>
+                                        <td>:</td>
+                                        <td>
+
+
+                                            {{ $examdetails->student->Name }}
+
+
+                                        </td>
+                                    </tr>
+                                    <tr>
                                         <td> Subject Name</td>
                                         <td>:</td>
                                         <td>
 
 
-                                            {{$examdetails->Exam_Name }}
+
+                                            {{-- @dd($examdetails) --}}
+                                            {{ $examdetails->subject->Exam_Name }}
+                                            {{-- @endif --}}
+
+
 
                                         </td>
                                     </tr>
@@ -47,21 +63,10 @@
                                     <tr>
                                         <td>Subject Code </td>
                                         <td>:</td>
-                                        <td>{{ $examdetails->Course_Code }}</td>
+                                        <td>{{ $examdetails->Subject_Code }}</td>
                                     </tr>
 
-                                    <tr>
-                                        <td> Students Name</td>
-                                        <td>:</td>
-                                        <td>
 
-                                         @foreach ($examdetails->students as $item )
-
-                                         {{$item->Name }}
-                                         @endforeach
-
-                                        </td>
-                                    </tr>
 
 
 

@@ -35,9 +35,10 @@
                                             <table class="table table-striped">
                                                 <thead>
                                                     <tr>
+                                                        <th>Students Name</th>
                                                         <th>Subject Name</th>
                                                         <th>Subject Code</th>
-                                                        <th>Students Name</th>
+
                                                         <th>Action</th>
 
                                                     </tr>
@@ -45,16 +46,6 @@
                                                 <tbody>
                                                     @foreach ($examdetails as $item)
                                                         <tr>
-
-                                                            <td>
-                                                                {{ $item->Subject_Name }}
-                                                            </td>
-
-
-                                                            <td>
-                                                                {{ $item->Subject_Code }}
-
-                                                            </td>
                                                             <td>
                                                                 {{-- @if ($item->student)
                                                                     <ol>
@@ -63,9 +54,20 @@
                                                                         @endforeach
                                                                     </ol>
                                                                 @endif --}}
-                                                                {{ $item->student_name }}
+                                                                {{ $item->student->Name }}
 
                                                             </td>
+
+                                                            <td>
+                                                                {{ $item->subject->Exam_Name }}
+                                                            </td>
+
+
+                                                            <td>
+                                                                {{ $item->Subject_Code }}
+
+                                                            </td>
+
                                                             <td>
                                                                 <a href="{{ route('dashboard.examlist.details', $item->id) }}"
                                                                     class="btn btn-sm btn-info">details</a>

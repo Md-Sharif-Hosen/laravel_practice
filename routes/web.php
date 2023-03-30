@@ -128,6 +128,10 @@ Route::get('/details/{id}','ExamListController@details')->name('dashboard.examli
 });
 
 
-
+Route::group( ['prefix'=>'examabsent',],function(){
+    Route::get('/create','ExamAbsentController@create')->name('dashboard.examabsent.create');
+    Route::post('/store','ExamAbsentController@store')->name('dashboard.examabsent.store');
+    Route::get('/index','ExamAbsentController@index')->name('dashboard.examabsent.index');
+});
 
 });
