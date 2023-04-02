@@ -16,10 +16,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/crud','CrudController@index')->name('crud-index');
-Route::get('/edit/{id}','CrudController@edit');
-Route::post('/crud-index','CrudController@store')->name('crud-insert');
-Route::post('/crud-update','CrudController@update')->name('crud-update');
+
+Route::get('/crud', 'CrudController@index')->name('crud-index');
+Route::get('/edit/{id}', 'CrudController@edit');
+Route::post('/crud-index', 'CrudController@store')->name('crud-insert');
+Route::post('/crud-update', 'CrudController@update')->name('crud-update');
 
 Route::get('/', 'WebsiteControler@home');
 Route::get('/contact', 'WebsiteControler@contact')->name('website.contact');
@@ -33,105 +34,106 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 //admin
-Route::group( ['prefix'=>'admin','middleware'=>['auth'] ,'namespace'=>'Admin' ],function(){
-    Route::get('/dashboard', 'DashboardControler@index')->name('dashboard.home');
+Route::group(['prefix' => 'admin', 'middleware' => ['auth'], 'namespace' => 'Admin'], function () {
+    Route::get('/', 'DashboardControler@index')->name('dashboard.home');
+
+    Route::group( ['prefix'=>'exam' ],function(){
+        Route::get('/attend', 'DashboardControler@attend_exam')->name('dashboard.attend_exam');
+        Route::post('/attend', 'DashboardControler@attend_exam_submit')->name('dashboard.attend_exam_submit');
+        Route::get('/attend-students/{exam}', 'DashboardControler@attend_students')->name('dashboard.attend_students');
+        Route::get('/provide-marks/{exam_result}', 'DashboardControler@provide_marks')->name('dashboard.provide_marks');
+        Route::post('/provide-marks/{exam_result}', 'DashboardControler@provide_marks_submit')->name('dashboard.provide_marks_submit');
+
+    });
+
+    //common
+    Route::group(['prefix' => 'common'], function () {
+        Route::get('/all', 'DashboardControler@demo_all')->name('dashboard.common.all');
+        Route::get('/show', 'DashboardControler@demo_show')->name('dashboard.common.show');
+        Route::get('/create', 'DashboardControler@demo_create')->name('dashboard.common.create');
+    });
+
+    //users
+    Route::group(['prefix' => 'user'], function () {
+        Route::get('/all', 'UserController@all')->name('dashboard.user.all');
+        Route::get('/show', 'UserController@show')->name('dashboard.user.show');
+        Route::get('/create', 'UserController@create')->name('dashboard.user.create');
+    });
+
+    //contact
+    Route::group(['prefix' => 'contact'], function () {
+        Route::get('/index', 'ContactController@index')->name('dashboard.contact.index');
+        Route::get('/show', 'ContactController@show')->name('dashboard.contact.show');
+        Route::get('/create', 'ContactController@create')->name('dashboard.contact.create');
+    });
+    //crud
+    Route::group(['prefix' => 'crud'], function () {
+        Route::get('/create', 'SharifController@create')->name('dashboard.crud.create');
+        Route::get('/index', 'SharifController@index')->name('dashboard.crud.index');
+        Route::post('/store', 'SharifController@store')->name('dashboard.crud.store');
+        Route::get('/edit/{id}', 'SharifController@edit')->name('dashboard.crud.edit');
+        Route::post('/update', 'SharifController@update')->name('dashboard.crud.update');
+    });
+    //crud book
+    Route::group(['prefix' => 'crud_book'], function () {
+        Route::get('/create', 'CrudBookController@create')->name('dashboard.crud_book.create');
+        Route::get('/index', 'CrudBookController@index')->name('dashboard.crud_book.index');
+        Route::post('/store', 'CrudBookController@store')->name('dashboard.crud_book.store');
+        Route::post('/update', 'CrudBookController@update')->name('dashboard.crud_book.update');
+    });
+    Route::group(['prefix' => 'shop',], function () {
+
+        Route::get('/index', [ShopController::class, 'index'])->name('dashboard.shop.index');
+        Route::get('/create', [ShopController::class, 'create'])->name('dashboard.shop.create');
+        Route::post('/store', [ShopController::class, 'store'])->name('dashboard.shop.store');
+        Route::get('/edit/{id}', [ShopController::class, 'edit'])->name('dashboard.shop.edit');
+        Route::post('/update/{id}', [ShopController::class, 'update'])->name('dashboard.shop.update');
+        Route::get('/show/{id}', [ShopController::class, 'show'])->name('dashboard.shop.show');
+        Route::get('/destroy/{id}', [ShopController::class, 'destroy'])->name('dashboard.shop.destroy');
+        Route::get('/details/{id}', [ShopController::class, 'details'])->name('dashboard.shop.details');
+    });
+    Route::group(['prefix' => 'fruits',], function () {
+
+        Route::get('/index', [FruitsController::class, 'index'])->name('dashboard.fruite.index');
+        Route::get('/create', [FruitsController::class, 'create'])->name('dashboard.fruite.create');
+        Route::post('/store', [FruitsController::class, 'store'])->name('dashboard.fruite.store');
+        Route::get('/edit/{id}', [FruitsController::class, 'edit'])->name('dashboard.fruite.edit');
+        Route::post('/update/{id}', [FruitsController::class, 'update'])->name('dashboard.fruite.update');
+        Route::get('/show/{id}', [FruitsController::class, 'show'])->name('dashboard.fruite.show');
+        Route::get('/destroy/{id}', [FruitsController::class, 'destroy'])->name('dashboard.fruite.destroy');
+        Route::get('/details/{id}', [FruitsController::class, 'details'])->name('dashboard.fruite.details');
+    });
+    Route::group(['prefix' => 'Student',], function () {
+        Route::get('/create', 'StudentController@create')->name('dashboard.student.create');
+        Route::post('/store', 'StudentController@store')->name('dashboard.student.store');
+        Route::get('/index', 'StudentController@index')->name('dashboard.student.index');
+        Route::get('/edit/{id}', 'StudentController@edit')->name('dashboard.student.edit');
+        Route::post('/update/{id}', 'StudentController@update')->name('dashboard.student.update');
+        Route::get('/destory/{id}', 'StudentController@destroy')->name('dashboard.student.destroy');
+        Route::get('/details/{id}', 'StudentController@details')->name('dashboard.student.details');
+    });
+    Route::group(['prefix' => 'Exam',], function () {
+        Route::get('/create', 'ExamController@create')->name('dashboard.Exam.create');
+        Route::post('/store', 'ExamController@store')->name('dashboard.Exam.store');
+        Route::get('/index', 'ExamController@index')->name('dashboard.Exam.index');
+        Route::get('/edit/{id}', 'ExamController@edit')->name('dashboard.Exam.edit');
+        Route::post('/update/{id}', 'ExamController@update')->name('dashboard.Exam.update');
+        Route::get('/destory/{id}', 'ExamController@destroy')->name('dashboard.Exam.destroy');
+        Route::get('/details/{id}', 'ExamController@details')->name('dashboard.Exam.details');
+    });
+
+    Route::group(['prefix' => 'examlist',], function () {
+        Route::get('/create', 'ExamListController@create')->name('dashboard.examlist.create');
+        Route::post('/store', 'ExamListController@store')->name('dashboard.examlist.store');
+        Route::get('/index', 'ExamListController@index')->name('dashboard.examlist.index');
+        Route::get('/destory/{id}', 'ExamListController@destory')->name('dashboard.examlist.destory');
+        Route::get('/details/{id}', 'ExamListController@details')->name('dashboard.examlist.details');
+    });
 
 
-
-//common
-Route::group( ['prefix'=>'common' ],function(){
-    Route::get('/all','DashboardControler@demo_all')->name('dashboard.common.all');
-    Route::get('/show','DashboardControler@demo_show')->name('dashboard.common.show');
-    Route::get('/create','DashboardControler@demo_create')->name('dashboard.common.create');
-});
-
-//users
-Route::group( ['prefix'=>'user' ],function(){
-    Route::get('/all','UserController@all')->name('dashboard.user.all');
-    Route::get('/show','UserController@show')->name('dashboard.user.show');
-    Route::get('/create','UserController@create')->name('dashboard.user.create');
-});
-
-//contact
-Route::group( ['prefix'=>'contact' ],function(){
-    Route::get('/index','ContactController@index')->name('dashboard.contact.index');
-    Route::get('/show','ContactController@show')->name('dashboard.contact.show');
-    Route::get('/create','ContactController@create')->name('dashboard.contact.create');
-});
-//crud
-Route::group( ['prefix'=>'crud' ],function(){
-    Route::get('/create','SharifController@create')->name('dashboard.crud.create');
-    Route::get('/index','SharifController@index')->name('dashboard.crud.index');
-    Route::post('/store','SharifController@store')->name('dashboard.crud.store');
-    Route::get('/edit/{id}','SharifController@edit')->name('dashboard.crud.edit');
-    Route::post('/update','SharifController@update')->name('dashboard.crud.update');
-});
-//crud book
-Route::group( ['prefix'=>'crud_book' ],function(){
-    Route::get('/create','CrudBookController@create')->name('dashboard.crud_book.create');
-    Route::get('/index','CrudBookController@index')->name('dashboard.crud_book.index');
-    Route::post('/store','CrudBookController@store')->name('dashboard.crud_book.store');
-    Route::post('/update','CrudBookController@update')->name('dashboard.crud_book.update');
-
-
-
-});
-Route::group(['prefix' => 'shop',], function () {
-
-    Route::get('/index', [ShopController::class, 'index'])->name('dashboard.shop.index');
-    Route::get('/create', [ShopController::class, 'create'])->name('dashboard.shop.create');
-    Route::post('/store', [ShopController::class, 'store'])->name('dashboard.shop.store');
-    Route::get('/edit/{id}', [ShopController::class, 'edit'])->name('dashboard.shop.edit');
-    Route::post('/update/{id}', [ShopController::class, 'update'])->name('dashboard.shop.update');
-    Route::get('/show/{id}', [ShopController::class, 'show'])->name('dashboard.shop.show');
-    Route::get('/destroy/{id}', [ShopController::class, 'destroy'])->name('dashboard.shop.destroy');
-    Route::get('/details/{id}', [ShopController::class, 'details'])->name('dashboard.shop.details');
-});
-Route::group(['prefix' => 'fruits',], function () {
-
-    Route::get('/index', [FruitsController::class, 'index'])->name('dashboard.fruite.index');
-    Route::get('/create', [FruitsController::class, 'create'])->name('dashboard.fruite.create');
-    Route::post('/store', [FruitsController::class, 'store'])->name('dashboard.fruite.store');
-    Route::get('/edit/{id}', [FruitsController::class, 'edit'])->name('dashboard.fruite.edit');
-    Route::post('/update/{id}', [FruitsController::class, 'update'])->name('dashboard.fruite.update');
-    Route::get('/show/{id}', [FruitsController::class, 'show'])->name('dashboard.fruite.show');
-    Route::get('/destroy/{id}', [FruitsController::class, 'destroy'])->name('dashboard.fruite.destroy');
-    Route::get('/details/{id}', [FruitsController::class, 'details'])->name('dashboard.fruite.details');
-});
-Route::group( ['prefix'=>'Student',],function(){
-    Route::get('/create','StudentController@create')->name('dashboard.student.create');
-    Route::post('/store','StudentController@store')->name('dashboard.student.store');
-    Route::get('/index','StudentController@index')->name('dashboard.student.index');
-    Route::get('/edit/{id}','StudentController@edit')->name('dashboard.student.edit');
-    Route::post('/update/{id}','StudentController@update')->name('dashboard.student.update');
-    Route::get('/destory/{id}','StudentController@destroy')->name('dashboard.student.destroy');
-    Route::get('/details/{id}','StudentController@details')->name('dashboard.student.details');
-
-});
-Route::group( ['prefix'=>'Exam',],function(){
-    Route::get('/create','ExamController@create')->name('dashboard.Exam.create');
-    Route::post('/store','ExamController@store')->name('dashboard.Exam.store');
-    Route::get('/index','ExamController@index')->name('dashboard.Exam.index');
-    Route::get('/edit/{id}','ExamController@edit')->name('dashboard.Exam.edit');
-    Route::post('/update/{id}','ExamController@update')->name('dashboard.Exam.update');
-    Route::get('/destory/{id}','ExamController@destroy')->name('dashboard.Exam.destroy');
-    Route::get('/details/{id}','ExamController@details')->name('dashboard.Exam.details');
-
-});
-
-Route::group( ['prefix'=>'examlist',],function(){
-Route::get('/create','ExamListController@create')->name('dashboard.examlist.create');
-Route::post('/store','ExamListController@store')->name('dashboard.examlist.store');
-Route::get('/index','ExamListController@index')->name('dashboard.examlist.index');
-Route::get('/destory/{id}','ExamListController@destory')->name('dashboard.examlist.destory');
-Route::get('/details/{id}','ExamListController@details')->name('dashboard.examlist.details');
-});
-
-
-Route::group( ['prefix'=>'examabsent',],function(){
-    Route::get('/create','ExamAbsentController@create')->name('dashboard.examabsent.create');
-    Route::post('/store','ExamAbsentController@store')->name('dashboard.examabsent.store');
-    Route::get('/index','ExamAbsentController@index')->name('dashboard.examabsent.index');
-});
-
+    Route::group(['prefix' => 'examabsent',], function () {
+        Route::get('/create', 'ExamAbsentController@create')->name('dashboard.examabsent.create');
+        Route::post('/store', 'ExamAbsentController@store')->name('dashboard.examabsent.store');
+        Route::get('/index', 'ExamAbsentController@index')->name('dashboard.examabsent.index');
+    });
 });

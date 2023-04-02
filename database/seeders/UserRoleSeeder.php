@@ -27,7 +27,7 @@ class UserRoleSeeder extends Seeder
         ]);
 
         UserRole::create([
-            'title' => 'user',
+            'title' => 'student',
             'serial' => 3,
         ]);
     }

@@ -37,11 +37,11 @@
                                 <div class="form_group col-md-6">
                                     <label for="">Subject Name</label>
                                     {{-- @dd($studentinfo) --}}
-                                    {{-- <select class="form-control" name="Subject_Name" id="">
-                                        @foreach ($examsubject as $item)
+                                    <select class="form-control" name="Subject_Name" id="">
+                                        @foreach ($examabsent as $item)
                                             <option value="{{ $item->id }}">{{ $item->Exam_Name }}</option>
                                         @endforeach
-                                    </select> --}}
+                                    </select>
 
                                 </div>
 

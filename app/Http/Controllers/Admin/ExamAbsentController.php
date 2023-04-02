@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Exam;
+use App\Models\ExamAbsent;
 use Illuminate\Http\Request;
 
 class ExamAbsentController extends Controller
@@ -25,7 +27,8 @@ class ExamAbsentController extends Controller
     public function create()
     {
         //
-        return view('admin.examabsent.create');
+        $examabsent=Exam::get();
+        return view('admin.examabsent.create',compact('examabsent'));
     }
 
     /**
@@ -37,6 +40,8 @@ class ExamAbsentController extends Controller
     public function store(Request $request)
     {
         //
+        // $examabsentstore= new ExamAbsent();
+        // $examabsentstore=
     }
 
     /**
